@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1740829600 source:d:\175208\zajecia1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
