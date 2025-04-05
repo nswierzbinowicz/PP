@@ -201,8 +201,111 @@ int liczydlo(){
 }
 int pseudoLos(){
     srand(time(NULL));
-    int val = rand() % 2;
-    return val;
+    int firstVal = rand() % 2;
+    int poprzednia;
+    int aktualna = 1 - (firstVal * firstVal);
+    int i = 1;
+    printf("%d liczba ciągu: %d\n",i,firstVal);
+    while(1){
+        printf("Kolejna liczba ciągu: %d\n",aktualna);
+        poprzednia = aktualna;
+        aktualna = 1 - (poprzednia * poprzednia);
+    }
+}
+int zliczaj(){
+    static int suma = 0;
+    printf("Podaj liczbe calkowita: ");
+    int a;
+    scanf("%d",&a);
+    suma += a;
+    printf("Suma to: %d\n",suma);
+}
+int silniaRek( int n){
+    if(n == 0 || n == 1){
+        return 1;
+    }
+    else{
+        return n * silnia(n-1);
+    }
+
+}
+int ciagRek(int n){
+    if(n == 0){
+        return 1;
+    }
+    else{
+        return 2 * ciagRek(n-1) + 5;
+    }
+}
+int ciag2Rek(int n){
+    if(n == 0 || n == 1){
+        return 1;
+    }
+    else{
+        return ciag2Rek(n - 1) + 2 + ciag2Rek(n - 2) + 3;
+    }
+}
+int fiboRek(int n){
+    int a = 0;
+    int b = 1;
+    if(n == 0){
+        return 0;
+    }
+    else if(n == 1){
+        return 1;
+    }
+    else{
+        return fiboRek(n - 1) + fiboRek(n - 2);
+    }
+}
+int ciag3Rek(int n){
+    if(n == 0 || n == 1){
+        return 1;
+    }
+    else{
+        int a = 0;
+        for(int i = 0; i < n;i++){
+            a += ciag3Rek(i);
+        }
+        return a;
+    }
+}
+int ciag4Rek(int n){
+    if(n == 0 || n == 1){
+        return 1;
+    }
+    else if(n % 2 != 0){
+        return n + ciag4Rek(n-1);
+    }
+    else if(n % 2 == 0){
+        return ciag4Rek(n-1) * n;
+    }
+
+}
+int ciag5Rek(int n){
+    if(n == 0 || n == 1 || n == 2){
+        return 1;
+    }
+    else if(n % 3 == 0){
+        return ciag5Rek(n - 1) + ciag5Rek(n - 2);
+    }
+    else if(n % 3 == 1){
+        return 5 * (ciag5Rek(n - 1) + ciag5Rek(n - 2)) + 4;
+    }
+    else if(n % 3 == 2){
+        return 5 * (ciag5Rek(n - 1) + ciag5Rek(n - 2)) + 4;
+    }
+}
+int ciag6Rek(int n,int m){
+    if(m == 0){
+        return n;
+    }
+    else if(n == 0){
+        return m;
+    }
+    else{
+        return ciag6Rek(n - 1,m) + ciag6Rek(n,m-1) + ciag6Rek(n-1,m-1);
+    }
 }
 int main()
 {
@@ -324,5 +427,27 @@ int main()
 //    liczydlo();
 //    liczydlo();
 //    liczydlo();
-    printf("%d",pseudoLos());
+//    Zad2.2.18
+//    pseudoLos();
+//    Zad2.2.19
+//    zliczaj();
+//    zliczaj();
+//    zliczaj();
+//    Zad2.2.20
+//    printf("%d", silniaRek(5));
+//    Zad2.2.21
+//    printf("%d", ciagRek(0));
+//    Zad2.2.22
+//    printf("%d",ciag2Rek(23));
+//    Zad2.2.23
+//    printf("%d",fiboRek(10));
+//    Zad2.2.24
+//    printf("%d",ciag3Rek(3 ));
+//    Zad2.2.25
+//    printf("%d", ciag4Rek(6));
+//    Zad2.2.26
+//    printf("%d", ciag5Rek(7));
+//    Zad2.2.27
+    printf("%d",ciag6Rek(6,7));
 }
+
